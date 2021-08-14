@@ -1,4 +1,6 @@
 import pyrebase
+import requests
+import json
 from getpass import getpass
 
 firebaseConfig  = {
@@ -26,4 +28,15 @@ if user!="":
 else:
     print("error")
    
+try:
+    data_json={
+        
+        'email':"bigameroso@gmail.com",
+        'name':"Jesus Manuel"
+        
+    }
+    result= requests.post('https://fpyrebase-default-rtdb.firebaseio.com/personas.json',data=json.dumps(data_json))
+    print (result)
+except Exception as error:
+    print(error.args[0])
 
