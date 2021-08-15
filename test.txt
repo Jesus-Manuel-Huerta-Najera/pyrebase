@@ -1,1 +1,3 @@
 python app.py 8080
+docker run -it -p 8080:8080 -v /workspace/pyrebase/proyecto:/proyecto --name pybase -h ubuntu webapp:v1
+/workspace/pyrebase/proyecto
