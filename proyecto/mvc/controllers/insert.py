@@ -17,8 +17,8 @@ class Insert():
             correo = form.email
             data_json ={
         
-                'email':name,
-                'name':correo
+                'email':correo,
+                'name':name
                 
             }
             requests.post('https://fpyrebase-default-rtdb.firebaseio.com/personas.json',data=json.dumps(data_json))

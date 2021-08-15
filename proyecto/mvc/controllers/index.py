@@ -31,7 +31,7 @@ class Index():
             passw = form.passw
             user = auth.sign_in_with_email_and_password(mail,passw)
             if user!="":
-                result="Cuenta si registrada"
+                #result="Cuenta si registrada"
                 #return render.index(result)
                 web.seeother('/Plist')
             
