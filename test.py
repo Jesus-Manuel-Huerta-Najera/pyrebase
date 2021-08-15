@@ -6,7 +6,7 @@ from getpass import getpass
 firebaseConfig  = {
     "apiKey": "AIzaSyCgy1xQYP-28ufvMbaMog18VshMrG_pGmk",
     "authDomain": "pyrebase-d4022.firebaseapp.com",
-     "databaseURL": "https://pyrebase-d4022-default-rtdb.firebaseio.com",
+    "databaseURL": "https://fpyrebase-default-rtdb.firebaseio.com/",
     "projectId": "pyrebase-d4022",
     "storageBucket": "pyrebase-d4022.appspot.com",
     "messagingSenderId": "661495265135",
@@ -27,7 +27,17 @@ if user!="":
     print(user['idToken'])
 else:
     print("error")
-   
+try:
+    print("buena onda ---------------------")
+    db = firebase.database()
+    all_users = db.child("personas").get()
+    for user in all_users.each():
+        print(user.key()) # Morty
+        print(user.val()) # {name": "Mortimer 'Morty' Smith"}
+        print(user.val()['name']) # {name": "Mortimer 'Morty' Smith"}
+except Exception as e:
+    print(e.args[0])  
+
 try:
     data_json={
         

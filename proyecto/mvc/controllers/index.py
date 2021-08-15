@@ -1,5 +1,6 @@
 import web
 import pyrebase
+import json
 render = web.template.render("mvc/views/")
 class Index():
 
@@ -31,11 +32,12 @@ class Index():
             user = auth.sign_in_with_email_and_password(mail,passw)
             if user!="":
                 result="Cuenta si registrada"
-                return render.index(result)
-                #web.seeother('/Plist')
+                #return render.index(result)
+                web.seeother('/Plist')
             
             #model_alumnos.update(matricula,nombre,Ap,Am,date,gen,estado,ids)
             #web.seeother('/Plist')
         except Exception as e:
-            result="Cuenta no registrada"
-            return render.index(result)
+            final = json.loads(str(e.args[1]))
+            mensaje = final['error']['message']
+            return render.index(mensaje)
